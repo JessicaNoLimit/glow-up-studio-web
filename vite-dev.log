@@ -1,0 +1,49 @@
+
+> web-estetica-crm@0.0.0 dev
+> vite --host 0.0.0.0
+
+
+  [32m[1mVITE[22m v5.4.21[39m  [2mready in [0m[1m206[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5173[22m/[39m
+  [32m➜[39m  [1mNetwork[22m: [36mhttp://192.168.0.22:[1m5173[22m/[39m
+[2m[32m  ➜[39m[22m[2m  press [22m[1mh + enter[22m[2m to show help[22m
+[2m2:00:03[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/About.jsx[22m
+[2m2:00:07[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/About.css[22m
+[2m2:06:32[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Gallery.jsx[22m
+[2m2:06:37[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Gallery.css[22m
+[2m2:10:04[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Gallery.css[22m
+[2m2:15:11[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.css[22m
+[2m2:15:15[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Header.css[22m
+[2m2:15:22[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Services.css[22m
+[2m2:15:49[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Footer.jsx[22m
+[2m2:15:53[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Footer.css[22m
+[2m2:19:06[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Header.css[22m
+[2m2:21:38[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Header.jsx[22m
+[2m2:23:57[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Header.css[22m
+[2m2:30:26[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Benefits.jsx[22m
+[2m2:30:26[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/About.jsx[22m
+[2m2:30:26[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Gallery.jsx[22m
+[2m2:30:26[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Services.jsx[22m
+[2m2:30:26[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/ServiceModal.jsx[22m
+[2m2:30:26[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Contact.jsx[22m
+[2m2:30:26[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Footer.jsx[22m
+[2m2:30:26[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Hero.jsx[22m
+[2m2:31:15[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.jsx[22m
+[2m2:31:15[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.jsx[22m
+[2m2:38:35[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Hero.jsx[22m
+[2m2:38:35[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Services.jsx[22m
+[2m2:38:35[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Benefits.jsx[22m
+[2m2:38:35[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/About.jsx[22m
+[2m2:38:35[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Gallery.jsx[22m
+[2m2:38:35[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Contact.jsx[22m
+[2m2:38:35[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Footer.jsx[22m
+[2m2:38:35[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/ServiceModal.jsx[22m
+[2m2:38:46[22m [36m[1m[vite][22m[39m [32mpage reload [39m[2msrc/utils/emphasizeText.jsx[22m
+[2m2:41:55[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/About.jsx[22m
+[2m2:45:08[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Hero.css[22m
+[2m2:45:08[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/About.css[22m
+[2m2:45:08[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Gallery.css[22m
+[2m2:47:11[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/About.jsx[22m
+[2m2:47:17[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/About.css[22m
+^C
