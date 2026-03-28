@@ -9,6 +9,7 @@
     "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
     "gh-pages": "^6.1.1",
     "vite": "^5.4.10"
   }
