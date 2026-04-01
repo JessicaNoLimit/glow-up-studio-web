@@ -23,7 +23,16 @@ async function verifySession() {
     const response = await fetch(DASHBOARD_ENDPOINT, {
       method: 'GET',
       credentials: 'include',
+      headers: {
+        'X-Requested-With': 'XMLHttpRequest', // Indicar que es una petición AJAX
+      },
     });
+
+    // Manejar 401 Unauthorized: redirigir al login
+    if (response.status === 401) {
+      redirectToLogin();
+      return;
+    }
 
     const contentType = response.headers.get('content-type') || '';
     const isJsonResponse = contentType.includes('application/json');
