@@ -1,9 +1,10 @@
 import { logoutAdmin } from './api.js';
+import { API_BASE_URL } from './config.js';
 
 const adminNameElement = document.querySelector('#admin-name');
 const sessionStatusElement = document.querySelector('#session-status');
 const logoutButton = document.querySelector('#logout-button');
-const DASHBOARD_ENDPOINT = 'http://localhost:4000/admin/dashboard';
+const DASHBOARD_ENDPOINT = `${API_BASE_URL}/admin/dashboard`;
 
 function redirectToLogin() {
   window.location.replace('./login.html');
