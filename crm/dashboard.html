@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Glow Up Studio CRM | Dashboard</title>
+    <title>Glow Up Studio CRM | Panel</title>
     <meta
       name="description"
-      content="Base layout del CRM de Glow Up Studio."
+      content="Panel principal del CRM de Glow Up Studio."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,9 +16,9 @@
     />
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
-  <body class="crm-dashboard-page">
+  <body class="crm-dashboard-page crm-is-loading">
     <div class="crm-layout">
-      <aside class="crm-sidebar" aria-label="Navegacion principal del CRM">
+      <aside class="crm-sidebar" aria-label="Navegación principal del CRM">
         <div class="crm-sidebar__top">
           <a class="crm-brand" href="./dashboard.html" aria-label="Glow Up Studio CRM">
             <span class="crm-brand__mark">G</span>
@@ -29,10 +29,10 @@
           </a>
 
           <nav class="crm-nav" aria-label="Secciones internas">
-            <a class="crm-nav__link is-active" href="./dashboard.html">Dashboard</a>
-            <a class="crm-nav__link" href="#">Citas</a>
-            <a class="crm-nav__link" href="#">Clientas</a>
-            <a class="crm-nav__link" href="#">Servicios</a>
+            <a class="crm-nav__link is-active" href="./dashboard.html">Panel</a>
+            <a class="crm-nav__link" href="./appointments.html">Citas</a>
+            <a class="crm-nav__link" href="./clients.html">Clientas</a>
+            <a class="crm-nav__link" href="./services.html">Servicios</a>
             <a class="crm-nav__link" href="#">Caja</a>
             <a class="crm-nav__link" href="#">Ajustes</a>
           </nav>
@@ -40,7 +40,7 @@
 
         <div class="crm-sidebar__bottom">
           <button class="crm-logout" id="logout-button" type="button">
-            Cerrar sesion
+            Cerrar sesión
           </button>
         </div>
       </aside>
@@ -50,71 +50,68 @@
           <div class="crm-header__content">
             <div>
               <p class="crm-header__eyebrow">Panel interno</p>
-              <h1 class="crm-header__title">Dashboard</h1>
+              <h1 class="crm-header__title">Panel</h1>
             </div>
 
             <div class="crm-admin-chip" aria-live="polite">
-              <span class="crm-admin-chip__label">Admin</span>
-              <strong id="admin-name">Cargando...</strong>
+              <span class="crm-admin-chip__label">Administración</span>
+              <strong id="admin-name"></strong>
             </div>
           </div>
         </header>
 
-        <main class="crm-content" aria-label="Contenido principal del dashboard">
+        <main class="crm-content" aria-label="Contenido principal del panel">
           <section class="crm-hero-card">
             <div class="crm-hero-card__content">
               <p class="crm-section-label">Resumen operativo</p>
               <h2 class="crm-hero-card__title">
-                Base del CRM lista para organizar la operacion diaria.
+                El CRM está listo para organizar la operativa diaria.
               </h2>
               <p class="crm-hero-card__text">
-                Este dashboard establece la estructura visual del panel interno y
-                servira como base para citas, clientas, servicios, caja y ajustes.
+                Este panel establece la base visual del área interna y servirá
+                como punto de control para citas, clientas, servicios, caja y ajustes.
               </p>
             </div>
           </section>
 
           <section class="crm-stats-grid" aria-label="Tarjetas de resumen">
             <article class="crm-stat-card">
-              <span class="crm-stat-card__label">Citas del dia</span>
-              <strong class="crm-stat-card__value">12</strong>
-              <p class="crm-stat-card__text">Vista inicial para proximos modulos.</p>
+              <span class="crm-stat-card__label">Citas del día</span>
+              <strong class="crm-stat-card__value" id="stat-today"></strong>
+              <p class="crm-stat-card__text">Citas programadas para hoy</p>
             </article>
 
             <article class="crm-stat-card">
-              <span class="crm-stat-card__label">Clientas activas</span>
-              <strong class="crm-stat-card__value">248</strong>
-              <p class="crm-stat-card__text">Espacio reservado para resumen de CRM.</p>
+              <span class="crm-stat-card__label">Clientas totales</span>
+              <strong class="crm-stat-card__value" id="stat-clients"></strong>
+              <p class="crm-stat-card__text">Clientas registradas en el sistema</p>
             </article>
 
             <article class="crm-stat-card">
-              <span class="crm-stat-card__label">Caja pendiente</span>
-              <strong class="crm-stat-card__value">EUR 420</strong>
-              <p class="crm-stat-card__text">Preparado para futura gestion economica.</p>
+              <span class="crm-stat-card__label">Servicios activos</span>
+              <strong class="crm-stat-card__value" id="stat-services"></strong>
+              <p class="crm-stat-card__text">Servicios disponibles para reservar</p>
             </article>
           </section>
 
-          <section class="crm-panels-grid" aria-label="Bloques base del dashboard">
+          <section class="crm-panels-grid" aria-label="Bloques base del panel">
             <article class="crm-panel-card">
               <div class="crm-panel-card__header">
-                <p class="crm-section-label">Proximamente</p>
-                <h2 class="crm-panel-card__title">Modulos principales</h2>
+                <p class="crm-section-label">Próximas citas</p>
+                <h2 class="crm-panel-card__title">Agenda próxima</h2>
               </div>
-              <ul class="crm-list">
-                <li>Citas y agenda interna</li>
-                <li>Fichas de clientas</li>
-                <li>Servicios y catalogo operativo</li>
-                <li>Control de caja y ajustes</li>
-              </ul>
+              <div id="upcoming-appointments" class="crm-appointments-list">
+                <p class="crm-panel-card__text">Cargando citas...</p>
+              </div>
             </article>
 
             <article class="crm-panel-card crm-panel-card--soft">
               <div class="crm-panel-card__header">
-                <p class="crm-section-label">Estado de sesion</p>
+                <p class="crm-section-label">Estado de sesión</p>
                 <h2 class="crm-panel-card__title">Acceso verificado</h2>
               </div>
               <p class="crm-panel-card__text" id="session-status">
-                Verificando sesion activa...
+                Verificando sesión activa...
               </p>
             </article>
           </section>
