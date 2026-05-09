@@ -5,6 +5,10 @@ async function requireAuth(req, res, next) {
     const sessionAdmin = req.session?.adminUser;
 
     if (!sessionAdmin?.id) {
+      // Para peticiones API, devolver 401 JSON en lugar de redirect
+      if (req.path.startsWith('/admin/') && req.xhr) {
+        return res.status(401).json({ error: 'Unauthorized' });
+      }
       return res.redirect('/admin/login');
     }
 
@@ -12,6 +16,10 @@ async function requireAuth(req, res, next) {
 
     if (!adminUser) {
       req.session.destroy(() => {});
+      // Para peticiones API, devolver 401 JSON en lugar de redirect
+      if (req.path.startsWith('/admin/') && req.xhr) {
+        return res.status(401).json({ error: 'Unauthorized' });
+      }
       return res.redirect('/admin/login');
     }
 

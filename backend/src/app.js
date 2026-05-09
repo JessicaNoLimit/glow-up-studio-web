@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
@@ -22,6 +23,9 @@ app.use(morgan(config.nodeEnv === 'production' ? 'combined' : 'dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(sessionMiddleware);
+
+// Servir archivos estáticos del CRM
+app.use('/crm', express.static(path.join(__dirname, '../../crm')));
 
 app.use(router);
 app.use(notFoundHandler);
