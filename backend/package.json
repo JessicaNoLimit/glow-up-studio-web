@@ -4,10 +4,14 @@
   "private": true,
   "description": "Backend base for Glow Up Studio admin CRM",
   "main": "src/server.js",
-  "scripts": {
-    "dev": "nodemon src/server.js",
-    "start": "node src/server.js"
-  },
+"scripts": {
+  "dev": "nodemon src/server.js",
+  "start": "node src/server.js",
+  "migrate": "node src/database/migrate.js migrate",
+  "migrate:status": "node src/database/migrate.js status",
+  "seed": "node src/database/seed.js",
+  "db:setup": "npm run migrate && npm run seed"
+},
   "dependencies": {
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",

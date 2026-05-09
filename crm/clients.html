@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Glow Up Studio CRM | Clientas</title>
+    <meta
+      name="description"
+      content="Gestión de clientas de Glow Up Studio CRM."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body class="crm-dashboard-page crm-is-loading">
+    <div class="crm-layout">
+      <aside class="crm-sidebar" aria-label="Navegación principal del CRM">
+        <div class="crm-sidebar__top">
+          <a class="crm-brand" href="./dashboard.html" aria-label="Glow Up Studio CRM">
+            <span class="crm-brand__mark">G</span>
+            <span class="crm-brand__text">
+              Glow Up Studio
+              <small>CRM</small>
+            </span>
+          </a>
+
+          <nav class="crm-nav" aria-label="Secciones internas">
+            <a class="crm-nav__link" href="./dashboard.html">Panel</a>
+            <a class="crm-nav__link" href="./appointments.html">Citas</a>
+            <a class="crm-nav__link is-active" href="./clients.html">Clientas</a>
+            <a class="crm-nav__link" href="./services.html">Servicios</a>
+            <a class="crm-nav__link" href="#">Caja</a>
+            <a class="crm-nav__link" href="#">Ajustes</a>
+          </nav>
+        </div>
+
+        <div class="crm-sidebar__bottom">
+          <button class="crm-logout" id="logout-button" type="button">
+            Cerrar sesión
+          </button>
+        </div>
+      </aside>
+
+      <div class="crm-main-shell">
+        <header class="crm-header">
+          <div class="crm-header__content">
+            <div>
+              <p class="crm-header__eyebrow">Gestión de clientas</p>
+              <h1 class="crm-header__title">Clientas</h1>
+            </div>
+
+            <div class="crm-admin-chip" aria-live="polite">
+              <span class="crm-admin-chip__label">Administración</span>
+              <strong id="admin-name"></strong>
+            </div>
+          </div>
+        </header>
+
+        <main class="crm-content" aria-label="Contenido principal del módulo de clientas">
+          <section class="crm-hero-card">
+            <div class="crm-hero-card__content">
+              <p class="crm-section-label">Base de clientas</p>
+              <h2 class="crm-hero-card__title">
+                Gestiona las clientas del centro
+              </h2>
+              <p class="crm-hero-card__text">
+                Administra la información de contacto, historial y notas de tus clientas.
+              </p>
+            </div>
+          </section>
+
+          <section class="crm-panels-grid" aria-label="Gestión de clientas">
+            <article class="crm-panel-card">
+              <div class="crm-panel-card__header">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                  <div>
+                    <p class="crm-section-label">Listado de clientas</p>
+                    <h2 class="crm-panel-card__title">Todas las clientas</h2>
+                  </div>
+                  <button class="login-button" id="createClientBtn" style="min-height: 44px; padding: 0 20px;">
+                    + Nueva clienta
+                  </button>
+                </div>
+                <input type="text" class="search-input" id="searchInput" placeholder="Buscar por nombre, teléfono o correo electrónico..." style="width: 100%; margin-bottom: 16px;">
+              </div>
+
+              <div class="table-container">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Nombre completo</th>
+                      <th>Teléfono</th>
+                      <th>Correo electrónico</th>
+                      <th>Notas</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody id="clientsTableBody">
+                  </tbody>
+                </table>
+              </div>
+            </article>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <div id="clientModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 id="modalTitle">Nueva clienta</h2>
+          <span class="modal-close" id="modalClose">&times;</span>
+        </div>
+        <form id="clientForm" class="modal-body">
+          <input type="hidden" id="clientId">
+
+          <div class="form-group">
+            <label for="clientFirstName">Nombre *</label>
+            <input type="text" id="clientFirstName" required>
+          </div>
+
+          <div class="form-group">
+            <label for="clientLastName">Apellidos</label>
+            <input type="text" id="clientLastName">
+          </div>
+
+          <div class="form-group">
+            <label for="clientPhone">Teléfono *</label>
+            <input type="tel" id="clientPhone" required>
+          </div>
+
+          <div class="form-group">
+            <label for="clientEmail">Correo electrónico</label>
+            <input type="email" id="clientEmail">
+          </div>
+
+          <div class="form-group">
+            <label for="clientNotes">Notas</label>
+            <textarea id="clientNotes" rows="3"></textarea>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="crm-logout" id="modalCancel">Cancelar</button>
+            <button type="submit" class="login-button">Guardar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script type="module" src="./js/clients.js"></script>
+  </body>
+</html>

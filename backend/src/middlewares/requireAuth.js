@@ -3,24 +3,24 @@ const AdminUser = require('../models/AdminUser');
 async function requireAuth(req, res, next) {
   try {
     const sessionAdmin = req.session?.adminUser;
+    const wantsJson = req.headers['accept']?.includes('application/json');
 
     if (!sessionAdmin?.id) {
-      // Para peticiones API, devolver 401 JSON en lugar de redirect
-      if (req.path.startsWith('/admin/') && req.xhr) {
+      if (wantsJson) {
         return res.status(401).json({ error: 'Unauthorized' });
       }
-      return res.redirect('/admin/login');
+      return res.redirect('/crm/login.html');
     }
 
     const adminUser = await AdminUser.findById(sessionAdmin.id);
 
     if (!adminUser) {
       req.session.destroy(() => {});
-      // Para peticiones API, devolver 401 JSON en lugar de redirect
-      if (req.path.startsWith('/admin/') && req.xhr) {
+
+      if (wantsJson) {
         return res.status(401).json({ error: 'Unauthorized' });
       }
-      return res.redirect('/admin/login');
+      return res.redirect('/crm/login.html');
     }
 
     req.adminUser = AdminUser.toSafeProfile(adminUser);

@@ -43,7 +43,7 @@ async function redirectIfAuthenticated() {
       window.location.replace('./dashboard.html');
     }
   } catch (error) {
-    console.error('Unable to verify admin session:', error);
+    console.error('[ERROR] auth.js unable to verify admin session:', error);
   }
 }
 
@@ -65,7 +65,7 @@ async function handleLoginSubmit(event) {
   try {
     await loginAdmin({ email, password });
     setFeedback('Acceso correcto. Redirigiendo al panel...', 'success');
-    window.location.assign('./dashboard.html');
+    window.location.replace('./dashboard.html');
   } catch (error) {
     setFeedback(
       error.message ||

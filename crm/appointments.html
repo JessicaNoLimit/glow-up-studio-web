@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Glow Up Studio CRM | Citas</title>
+    <meta
+      name="description"
+      content="Gestión de citas de Glow Up Studio CRM."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body class="crm-dashboard-page crm-is-loading">
+    <div class="crm-layout">
+      <aside class="crm-sidebar" aria-label="Navegación principal del CRM">
+        <div class="crm-sidebar__top">
+          <a class="crm-brand" href="./dashboard.html" aria-label="Glow Up Studio CRM">
+            <span class="crm-brand__mark">G</span>
+            <span class="crm-brand__text">
+              Glow Up Studio
+              <small>CRM</small>
+            </span>
+          </a>
+
+          <nav class="crm-nav" aria-label="Secciones internas">
+            <a class="crm-nav__link" href="./dashboard.html">Panel</a>
+            <a class="crm-nav__link is-active" href="./appointments.html">Citas</a>
+            <a class="crm-nav__link" href="./clients.html">Clientas</a>
+            <a class="crm-nav__link" href="./services.html">Servicios</a>
+            <a class="crm-nav__link" href="#">Caja</a>
+            <a class="crm-nav__link" href="#">Ajustes</a>
+          </nav>
+        </div>
+
+        <div class="crm-sidebar__bottom">
+          <button class="crm-logout" id="logout-button" type="button">
+            Cerrar sesión
+          </button>
+        </div>
+      </aside>
+
+      <div class="crm-main-shell">
+        <header class="crm-header">
+          <div class="crm-header__content">
+            <div>
+              <p class="crm-header__eyebrow">Gestión de citas</p>
+              <h1 class="crm-header__title">Citas</h1>
+            </div>
+
+            <div class="crm-admin-chip" aria-live="polite">
+              <span class="crm-admin-chip__label">Administración</span>
+              <strong id="admin-name"></strong>
+            </div>
+          </div>
+        </header>
+
+        <main class="crm-content" aria-label="Contenido principal del módulo de citas">
+          <section class="crm-hero-card">
+            <div class="crm-hero-card__content">
+              <p class="crm-section-label">Agenda de citas</p>
+              <h2 class="crm-hero-card__title">
+                Gestiona las citas del centro
+              </h2>
+              <p class="crm-hero-card__text">
+                Administra la agenda, crea citas y organiza los horarios de las clientas.
+              </p>
+            </div>
+          </section>
+
+          <section class="crm-panels-grid" aria-label="Gestión de citas">
+            <article class="crm-panel-card">
+              <div class="crm-panel-card__header">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                  <div>
+                    <p class="crm-section-label">Listado de citas</p>
+                    <h2 class="crm-panel-card__title">Todas las citas</h2>
+                  </div>
+                  <div class="filter-buttons">
+                    <button class="crm-logout" id="createAppointmentBtn" style="min-height: 44px; padding: 0 20px;">+ Nueva cita</button>
+                    <button class="login-button" id="showAllBtn" style="min-height: 44px; padding: 0 20px;">Todas</button>
+                    <button class="crm-logout" id="showTodayBtn" style="min-height: 44px; padding: 0 20px;">Hoy</button>
+                    <button class="crm-logout" id="showUpcomingBtn" style="min-height: 44px; padding: 0 20px;">Próximas</button>
+                  </div>
+                </div>
+                <input type="text" class="search-input" id="searchInput" placeholder="Buscar por clienta..." style="width: 100%; margin-bottom: 16px;">
+              </div>
+
+              <div class="table-container">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Fecha</th>
+                      <th>Hora</th>
+                      <th>Clienta</th>
+                      <th>Estado</th>
+                      <th>Origen</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody id="appointmentsTableBody">
+                  </tbody>
+                </table>
+              </div>
+            </article>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <div id="appointmentModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 id="modalTitle">Nueva cita</h2>
+          <span class="modal-close" id="modalClose">&times;</span>
+        </div>
+        <form id="appointmentForm" class="modal-body">
+          <input type="hidden" id="appointmentId">
+
+          <div class="form-group">
+            <label for="appointmentClient">Clienta *</label>
+            <select id="appointmentClient" required>
+              <option value="">Seleccionar clienta...</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="appointmentDate">Fecha *</label>
+            <input type="date" id="appointmentDate" required>
+          </div>
+
+          <div class="form-group">
+            <label for="appointmentTime">Hora *</label>
+            <input type="time" id="appointmentTime" required>
+          </div>
+
+          <div class="form-group">
+            <label for="appointmentDuration">Duración (minutos) *</label>
+            <input type="number" id="appointmentDuration" min="15" step="15" value="60" required>
+          </div>
+
+          <div class="form-group">
+            <label for="appointmentStatus">Estado *</label>
+            <select id="appointmentStatus" required>
+              <option value="pending_payment">Pendiente de pago</option>
+              <option value="confirmed">Confirmada</option>
+              <option value="cancelled">Cancelada</option>
+              <option value="completed">Completada</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="appointmentOrigin">Origen *</label>
+            <select id="appointmentOrigin" required>
+              <option value="web">Web</option>
+              <option value="phone">Teléfono</option>
+              <option value="in_person">Presencial</option>
+              <option value="admin">Centro</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="appointmentNotes">Notas</label>
+            <textarea id="appointmentNotes" rows="3"></textarea>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="crm-logout" id="modalCancel">Cancelar</button>
+            <button type="submit" class="login-button">Guardar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script type="module" src="./js/appointments.js"></script>
+  </body>
+</html>
