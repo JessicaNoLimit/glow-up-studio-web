@@ -1,8 +1,15 @@
 const { pool } = require('../database/connection');
 
 class ServicesService {
-  static async getAll() {
-    const [rows] = await pool.query(`
+  static mapRow(row) {
+    return {
+      ...row,
+      total_duration_minutes: parseInt(row.total_duration_minutes),
+    };
+  }
+
+  static async getAll(connection = pool) {
+    const [rows] = await connection.query(`
       SELECT
         id,
         name,
@@ -16,14 +23,30 @@ class ServicesService {
       ORDER BY category, name
     `);
 
-    return rows.map(row => ({
-      ...row,
-      total_duration_minutes: parseInt(row.total_duration_minutes)
-    }));
+    return rows.map((row) => this.mapRow(row));
   }
 
-  static async getById(id) {
-    const [rows] = await pool.query(`
+  static async getActive(connection = pool) {
+    const [rows] = await connection.query(`
+      SELECT
+        id,
+        name,
+        category,
+        price,
+        duration_minutes,
+        margin_minutes,
+        (duration_minutes + COALESCE(margin_minutes, 5)) as total_duration_minutes,
+        active
+      FROM services
+      WHERE active = 1
+      ORDER BY category, name
+    `);
+
+    return rows.map((row) => this.mapRow(row));
+  }
+
+  static async getById(id, connection = pool) {
+    const [rows] = await connection.query(`
       SELECT
         id,
         name,
@@ -39,11 +62,28 @@ class ServicesService {
 
     if (rows.length === 0) return null;
 
-    const row = rows[0];
-    return {
-      ...row,
-      total_duration_minutes: parseInt(row.total_duration_minutes)
-    };
+    return this.mapRow(rows[0]);
+  }
+
+  static async getActiveById(id, connection = pool) {
+    const [rows] = await connection.query(`
+      SELECT
+        id,
+        name,
+        category,
+        price,
+        duration_minutes,
+        margin_minutes,
+        (duration_minutes + COALESCE(margin_minutes, 5)) as total_duration_minutes,
+        active
+      FROM services
+      WHERE id = ?
+        AND active = 1
+    `, [id]);
+
+    if (rows.length === 0) return null;
+
+    return this.mapRow(rows[0]);
   }
 
   static async create(serviceData) {
