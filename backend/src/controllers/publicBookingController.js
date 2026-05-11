@@ -24,6 +24,16 @@ async function getAvailability(req, res) {
   }
 }
 
+async function getMultiServiceAvailability(req, res) {
+  try {
+    const availability = await PublicBookingService.getMultiServiceAvailability(req.body);
+    res.json(availability);
+  } catch (error) {
+    const statusCode = error.statusCode || 400;
+    res.status(statusCode).json({ error: error.message });
+  }
+}
+
 async function createBooking(req, res) {
   try {
     const booking = await PublicBookingService.createBooking(req.body);
@@ -37,5 +47,6 @@ async function createBooking(req, res) {
 module.exports = {
   getPublicServices,
   getAvailability,
+  getMultiServiceAvailability,
   createBooking,
 };

@@ -33,6 +33,16 @@ export function getAvailabilityByService({ serviceId, date }) {
   return request(`/public/availability?${params.toString()}`)
 }
 
+export function requestMultiServiceAvailability(serviceIds, date) {
+  return request('/public/availability', {
+    method: 'POST',
+    body: JSON.stringify({
+      serviceIds,
+      date,
+    }),
+  })
+}
+
 export function createPublicBooking(bookingData) {
   return request('/public/bookings', {
     method: 'POST',

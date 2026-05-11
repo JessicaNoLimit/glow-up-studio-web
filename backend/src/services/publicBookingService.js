@@ -1,6 +1,7 @@
 const { pool } = require('../database/connection');
 const ServicesService = require('./servicesService');
 const ClientsService = require('./clientsService');
+const BookingEngineService = require('./bookingEngineService');
 
 const SLOT_INTERVAL_MINUTES = 30;
 const SALON_SCHEDULE = {
@@ -255,6 +256,10 @@ function validateBookingPayload(payload) {
 class PublicBookingService {
   static async getPublicServices() {
     return ServicesService.getActive(pool);
+  }
+
+  static async getMultiServiceAvailability(payload) {
+    return BookingEngineService.getApproximateAvailability(payload);
   }
 
   static async getAvailability({ serviceId, date }) {

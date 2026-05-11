@@ -99,6 +99,95 @@
   background: rgba(255, 255, 255, 0.9);
 }
 
+.booking-modal__add-service {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+}
+
+.booking-modal__add-button,
+.booking-modal__search-button {
+  min-height: 50px;
+}
+
+.booking-modal__cart,
+.booking-modal__summary {
+  border: 1px solid rgba(141, 107, 91, 0.14);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.62);
+  padding: 16px;
+}
+
+.booking-modal__cart-header span,
+.booking-modal__summary span {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-primary-dark);
+}
+
+.booking-modal__cart-empty {
+  margin: 8px 0 0;
+  color: rgba(81, 57, 45, 0.72);
+}
+
+.booking-modal__cart-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.booking-modal__cart-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-top: 1px solid rgba(141, 107, 91, 0.12);
+}
+
+.booking-modal__cart-item:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.booking-modal__cart-item strong {
+  display: block;
+  color: var(--color-title);
+}
+
+.booking-modal__cart-item p {
+  margin: 6px 0 0;
+  color: rgba(81, 57, 45, 0.78);
+}
+
+.booking-modal__remove-button {
+  border: 0;
+  padding: 0;
+  color: #8d3d39;
+  font: inherit;
+  font-weight: 700;
+  background: transparent;
+  cursor: pointer;
+}
+
+.booking-modal__summary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.booking-modal__summary strong {
+  display: block;
+  margin-top: 8px;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem;
+  color: var(--color-title);
+}
+
 .booking-modal__field input[readonly] {
   color: rgba(81, 57, 45, 0.72);
   background: rgba(245, 238, 232, 0.95);
@@ -141,6 +230,15 @@
 @media (max-width: 640px) {
   .booking-modal__panel {
     padding: 28px 18px 18px;
+  }
+
+  .booking-modal__add-service,
+  .booking-modal__summary {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-modal__cart-item {
+    flex-direction: column;
   }
 
   .booking-modal__actions {
