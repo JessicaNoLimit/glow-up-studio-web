@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import './ServiceModal.css'
 
-function ServiceModal({ service, onClose, contactHref }) {
+function ServiceModal({ service, onClose, onReserveTreatment }) {
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === 'Escape') {
@@ -54,13 +54,18 @@ function ServiceModal({ service, onClose, contactHref }) {
                   <span>{treatment.duration}</span>
                   <strong>{treatment.price}</strong>
                 </div>
+                <div className="service-modal__item-action">
+                  <button
+                    className="button button--primary service-modal__reserve"
+                    type="button"
+                    onClick={() => onReserveTreatment(service, treatment)}
+                  >
+                    Reservar cita
+                  </button>
+                </div>
               </article>
             ))}
           </div>
-
-          <a className="button button--primary service-modal__cta" href={contactHref} onClick={onClose}>
-            Pide tu cita
-          </a>
         </div>
       </div>
     </div>

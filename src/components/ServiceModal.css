@@ -151,8 +151,12 @@
   color: var(--color-primary-dark);
 }
 
-.service-modal__cta {
-  margin-top: 28px;
+.service-modal__item-action {
+  grid-column: 1 / -1;
+}
+
+.service-modal__reserve {
+  min-width: 190px;
 }
 
 @keyframes service-modal-enter {
@@ -203,7 +207,7 @@
     min-width: 0;
   }
 
-  .service-modal__cta {
+  .service-modal__reserve {
     width: 100%;
   }
 }

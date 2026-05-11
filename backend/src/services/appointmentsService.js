@@ -177,6 +177,16 @@ class AppointmentsService {
     await pool.query('DELETE FROM appointments WHERE id = ?', [id]);
   }
 
+  static async getBlockCountByAppointmentId(appointmentId) {
+    const [rows] = await pool.query(`
+      SELECT COUNT(*) as count
+      FROM appointment_blocks
+      WHERE appointment_id = ?
+    `, [appointmentId]);
+
+    return rows[0].count;
+  }
+
   static async getTodayCount() {
     const [rows] = await pool.query(`
       SELECT COUNT(*) as count
